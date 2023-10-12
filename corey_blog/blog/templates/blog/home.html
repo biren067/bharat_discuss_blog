@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% if title %}
-    <title>Bharat Discuss - {{title}}</title>
-    {% else %}
-    <title>Bharat Discuss</title>
-    {% endif %}
-  </head>
-  <body>
-    Home page {% for p in posts%}
-    <h1>{{p.title}}</h1>
-    <p>By {{p.author}} on {{p.conent}}</p>
-    <p>{{p.date_posted}}</p>
-    {% endfor%}
-  </body>
-</html>
+{% extends 'blog/base.html' %}
+{%block title%}{{title}}{% endblock title%}
+{% block content %}
+ {% for post in posts%}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="#">{{ post.author }}</a>
+      <small class="text-muted">{{ post.date_posted }}</small>
+    </div>
+    <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+    <p class="article-content">{{ post.content }}</p>
+  </div>
+</article>
+   {% endfor%} 
+{% endblock content %}
