@@ -6,3 +6,5 @@ message.success
 message.warning
 =========================
 django.shortcut import redirect
+
+pip install django-crispy-forms
